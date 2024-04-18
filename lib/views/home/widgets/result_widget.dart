@@ -30,6 +30,7 @@ class _ResultWidgetState extends State<ResultWidget> {
   GlobalKey repaintKey = GlobalKey();
   bool islight = true;
   int cursorPosition = 40;
+  bool showProgress = true;
   ScreenshotController controller = ScreenshotController();
 
   @override
@@ -47,6 +48,7 @@ class _ResultWidgetState extends State<ResultWidget> {
                   showTitle: showTitle,
                   isLight: islight,
                   cursorPosition: cursorPosition,
+                  showProgress: showProgress,
                 )),
             VerticalSpace.vSpace16,
             SingleChildScrollView(
@@ -62,32 +64,51 @@ class _ResultWidgetState extends State<ResultWidget> {
                     ),
                   ),
                   VerticalSpace.vSpace16,
-                  RowSetting(
-                      isChecked: showTitle,
-                      onClick: (value) {
-                        setState(() {
-                          showTitle = value;
-                        });
-                      },
-                      title: "Show Tilte"),
+                  Row(
+                    children: [
+                      RowSetting(
+                          isChecked: showTitle,
+                          onClick: (value) {
+                            setState(() {
+                              showTitle = value;
+                            });
+                          },
+                          title: "Show Tilte"),
+                      HorizontalSpace.hSpace16,
+                      RowSetting(
+                          isChecked: showDetails,
+                          onClick: (value) {
+                            setState(() {
+                              showDetails = value;
+                            });
+                          },
+                          title: "Show Details"),
+                    ],
+                  ),
+
                   VerticalSpace.vSpace8,
-                  RowSetting(
-                      isChecked: showDetails,
-                      onClick: (value) {
-                        setState(() {
-                          showTitle = value;
-                        });
-                      },
-                      title: "Show Details"),
-                  VerticalSpace.vSpace8,
-                  RowSetting(
-                      isChecked: islight,
-                      onClick: (value) {
-                        setState(() {
-                          islight = value;
-                        });
-                      },
-                      title: islight ? "Light Mode" : "Dark Mode"),
+                  Row(
+                    children: [
+                      RowSetting(
+                          isChecked: islight,
+                          onClick: (value) {
+                            setState(() {
+                              islight = value;
+                            });
+                          },
+                          title: islight ? "Light Mode" : "Dark Mode"),
+                      HorizontalSpace.hSpace16,
+                      RowSetting(
+                          isChecked: showProgress,
+                          onClick: (value) {
+                            setState(() {
+                              showProgress = value;
+                            });
+                          },
+                          title: "Show Progress"),
+                    ],
+                  ),
+
                   VerticalSpace.vSpace8,
                   //choose quality
                   Align(
@@ -190,6 +211,7 @@ class _ResultWidgetState extends State<ResultWidget> {
                   showTitle: showTitle,
                   isLight: islight,
                   cursorPosition: cursorPosition,
+                  showProgress: showProgress,
                 )),
             HorizontalSpace.hSpace16,
             SizedBox(
@@ -202,32 +224,51 @@ class _ResultWidgetState extends State<ResultWidget> {
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   VerticalSpace.vSpace16,
-                  RowSetting(
-                      isChecked: showTitle,
-                      onClick: (value) {
-                        setState(() {
-                          showTitle = value;
-                        });
-                      },
-                      title: "Show Tilte"),
+                  Row(
+                    children: [
+                      RowSetting(
+                          isChecked: showTitle,
+                          onClick: (value) {
+                            setState(() {
+                              showTitle = value;
+                            });
+                          },
+                          title: "Show Tilte"),
+                      HorizontalSpace.hSpace16,
+                      RowSetting(
+                          isChecked: showDetails,
+                          onClick: (value) {
+                            setState(() {
+                              showDetails = value;
+                            });
+                          },
+                          title: "Show Details"),
+                    ],
+                  ),
+
                   VerticalSpace.vSpace8,
-                  RowSetting(
-                      isChecked: showDetails,
-                      onClick: (value) {
-                        setState(() {
-                          showTitle = value;
-                        });
-                      },
-                      title: "Show Details"),
-                  VerticalSpace.vSpace8,
-                  RowSetting(
-                      isChecked: islight,
-                      onClick: (value) {
-                        setState(() {
-                          islight = value;
-                        });
-                      },
-                      title: islight ? "Light Mode" : "Dark Mode"),
+                  Row(
+                    children: [
+                      RowSetting(
+                          isChecked: islight,
+                          onClick: (value) {
+                            setState(() {
+                              islight = value;
+                            });
+                          },
+                          title: islight ? "Light Mode" : "Dark Mode"),
+                      HorizontalSpace.hSpace16,
+                      RowSetting(
+                          isChecked: showProgress,
+                          onClick: (value) {
+                            setState(() {
+                              showProgress = value;
+                            });
+                          },
+                          title: "Show Progress"),
+                    ],
+                  ),
+
                   VerticalSpace.vSpace8,
                   //choose quality
                   SizedBox(

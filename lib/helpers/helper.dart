@@ -1,6 +1,7 @@
 class Helper {
   static extractIdFromUrl(String url) {
     //https://www.youtube.com/watch?v=KSQEnxZId9Y
+    Uri uri = Uri.parse(url);
     String idAndStuff = url.replaceAll("https://www.youtube.com/watch?v=", "");
     //remove stuff
     return idAndStuff.split("&").first;

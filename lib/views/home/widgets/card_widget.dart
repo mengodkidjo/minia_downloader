@@ -15,13 +15,15 @@ class CardWidget extends StatelessWidget {
       required this.showDetails,
       required this.quality,
       required this.isLight,
-      required this.cursorPosition});
+      required this.cursorPosition,
+      required this.showProgress});
   final YtbResponseModel? ytbResponseModel;
   final bool showTitle;
   final bool showDetails;
   final ThumbnailEnum quality;
   final bool isLight;
   final int cursorPosition;
+  final bool showProgress;
 
   @override
   Widget build(BuildContext context) {
@@ -76,25 +78,28 @@ class CardWidget extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  if (cursorPosition == 100)
-                    Container(
-                      width: 48,
-                      padding: const EdgeInsets.all(6.0),
-                      decoration: BoxDecoration(
-                          color: const Color.fromRGBO(0, 0, 0, 0.8),
-                          borderRadius: BorderRadius.circular(4.0)),
-                      child: Text(
-                        Helper.formatDuration(ytbResponseModel?.duration ?? ""),
-                        style: Theme.of(context).textTheme.bodySmall,
-                      ),
-                    ),
-                  LinearProgressIndicator(
-                    value: cursorPosition / 100,
-                    borderRadius: BorderRadius.circular(8.0),
-                    color: Colors.red,
-                  ),
-                ],
+                children: showProgress
+                    ? [
+                        if (cursorPosition == 100)
+                          Container(
+                            width: 48,
+                            padding: const EdgeInsets.all(6.0),
+                            decoration: BoxDecoration(
+                                color: const Color.fromRGBO(0, 0, 0, 0.8),
+                                borderRadius: BorderRadius.circular(4.0)),
+                            child: Text(
+                              Helper.formatDuration(
+                                  ytbResponseModel?.duration ?? ""),
+                              style: AppTheme.dark.textTheme.bodySmall,
+                            ),
+                          ),
+                        LinearProgressIndicator(
+                          value: cursorPosition / 100,
+                          borderRadius: BorderRadius.circular(8.0),
+                          color: Colors.red,
+                        ),
+                      ]
+                    : [],
               ),
             ),
           ),
